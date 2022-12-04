@@ -1,0 +1,74 @@
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+builds:
+  - id: linux-amd64
+    env:
+      - CGO_ENABLED=1
+    goos:
+      - linux
+    goarch:
+      - amd64
+    main: "."
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -extldflags=-static -X main.Version={{.Version}}
+
+  - id: linux-arm64
+    env:
+      - CGO_ENABLED=1
+      - GOHOSTARCH=amd64
+      - CC=aarch64-linux-gnu-gcc
+      - CXX=aarch64-linux-gnu-g++
+    goos:
+      - linux
+    goarch:
+      - arm64
+    main: "."
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -extldflags=-static -X main.Version={{.Version}}
+
+  - id: windows-amd64
+    env:
+      - CGO_ENABLED=1
+      - CC=x86_64-w64-mingw32-gcc
+      - CXX=x86_64-w64-mingw32-g++-posix
+    goos:
+      - windows
+    goarch:
+      - amd64
+    main: "."
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -extldflags=-static -X main.Version={{.Version}}
+
+archives:
+  - name_template: "{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE*
+      - README*
+      - CREDITS*
+      - CHANGELOG*
+    replacements:
+      linux: Linux
+      windows: Windows
+      amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
