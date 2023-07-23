@@ -14,7 +14,10 @@ release:
 	@git tag -a $(VERSION) -m "$(VERSION)"
 	@git push --tags origin
 
+credits:
+	@gocredits . > CREDITS
+
 test:
 	@go test -v ./...
 
-.PHONY: build build-r install release test
+.PHONY: build build-r install release credits test
