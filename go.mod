@@ -1,6 +1,6 @@
 module github.com/kawana77b/bookmark
 
-go 1.20
+go 1.21
 
 require (
 	github.com/logrusorgru/aurora/v4 v4.0.0
