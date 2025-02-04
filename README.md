@@ -84,5 +84,5 @@ The location of the path can be checked with `bookmark status`
 ## Lisence
 
 The source code license for this repository is MIT.  
-Feel free to fork it, as it is a personal tool and I do not intend to actively maintain it for public use.  
+Feel free to fork it, as it is a personal tool.  
 I am a learner of the program, so please feel free to send me any bug report, feedback or advice you may have :wink:
