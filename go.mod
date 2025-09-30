@@ -6,7 +6,7 @@ require (
 	github.com/logrusorgru/aurora/v4 v4.0.0
 	github.com/spf13/cobra v1.9.1
 	gorm.io/driver/sqlite v1.6.0
-	gorm.io/gorm v1.30.2
+	gorm.io/gorm v1.31.0
 )
 
 require (
