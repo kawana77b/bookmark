@@ -4,7 +4,7 @@ go 1.25.5
 
 require (
 	github.com/logrusorgru/aurora/v4 v4.0.0
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 	gorm.io/driver/sqlite v1.6.0
 	gorm.io/gorm v1.31.1
 )
